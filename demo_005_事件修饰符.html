@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <title>Document</title>
+
+    <style>
+        .d1{width: 300px; height: 300px; background-color: #00b9f1;}
+        .d2{width: 200px; height: 200px; background-color: #8ab42e;}
+        .d3{width: 100px; height: 100px; background-color: #ff6600;}
+    </style>
+
+</head>
+<body>
+    
+    <div id="app">
+        <!-- once 只执行一次 -->
+        <button @click.once="f1">点我</button>
+
+        <!-- prevent 阻止原来事件 -->
+        <a @click.prevent="f2" href="http://www.baidu.com/s?wd=胡辣汤">go to baidu</a>
+        
+        <!-- 事件委托模型，是由外到内，再由内到外传播的，且由外到内的时候不执行事件处理函数，由内到外才触发 -->
+        <!-- stop阻止事件冒泡  capture:直接触发事件-->
+        <table @click="f3">
+            <tr @click.stop="f4">
+                <td @click="f5">
+                    stop...........
+                </td>
+            </tr>
+        </table>
+
+
+        <table @click.capture="f3">
+            <tr @click.capture="f4">
+                <td @click.capture="f5">
+                    capture.........
+                </td>
+            </tr>
+        </table>
+
+        <!-- 只有事件发生在自己身上才触发，冒泡的不算 -->
+        <div class="d1" @click.self="f6">
+            <div class="d2">
+                <div class="d3"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        var app = new Vue({
+
+            el: "#app",
+
+            methods:{
+                f1(){
+                    console.log(parseInt(Math.random() * 100) + 1);
+                },
+
+                f2(){
+                    alert(222);
+                },
+
+                f3(){
+                    console.log(333);
+                },
+
+                f4(){
+                    console.log(444);
+                },
+
+                f5(){
+                    console.log(555);
+                },
+
+                f6(){
+                    console.log(666);
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

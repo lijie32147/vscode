@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <div id="app">
+
+        <!-- {{list[0].id}} - {{list[0].name}} <br>
+        {{list[1].id}} - {{list[1].name}} <br>
+        {{list[2].id}} - {{list[2].name}} <br>
+        {{list[3].id}} - {{list[3].name}} <br>
+        {{list[4].id}} - {{list[4].name}} <br> -->
+
+        <div v-for="item in list">
+            {{item.id}} - {{item.name}}
+        </div>
+
+        <br>
+
+        <div v-for="(item,index) in list">
+            {{index}}: {{item.id}} - {{item.name}}
+        </div>
+
+        <hr>
+
+        <div v-for="(value,key,index) in person">
+            {{index}} - {{key}} - {{value}}
+        </div>
+
+        <hr>
+
+        <ul>
+            <li v-for="i in 5">
+                <!-- <span v-if="i >= 2">{{i}}</span> -->
+                {{i}}
+            </li>
+        </ul>
+
+    </div>
+
+
+    <script>
+        var app = new Vue({
+
+            el: "#app",
+
+            data: {
+                list: [
+                    {id: 1, name: '关羽'},
+                    {id: 2, name: '张飞'},
+                    {id: 3, name: '赵云'},
+                    {id: 4, name: '马超'},
+                    {id: 5, name: '黄忠'}
+                ],
+
+                person: {
+                    id: 1001,
+                    name: "曹操",
+                    age: 66,
+                    weapon: '倚天剑',
+                    horse: '绝影'
+                }
+            }
+
+        });
+
+
+        var p = {id: 1002, name: "贾诩"}
+
+        console.log(p.id);
+        console.log(p.name);
+
+        p.address = "北大街";
+        console.log(p.address);
+
+        delete p.address;
+        console.log(p.address);
+
+    </script>
+
+
+</body>
+</html>

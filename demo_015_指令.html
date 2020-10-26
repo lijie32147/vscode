@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+
+        {{foo}}
+
+        <br>
+
+        <input type="text" v-focus v-model="foo">
+
+        <br>
+
+        <input type="text" v-abc>
+    </div>
+
+
+    <script>
+
+        // document.getElementsByTagName("input")[0].focus();
+
+        //全局指令
+        Vue.directive("focus",{
+
+            bind: function(el){
+                // console.log("bind........");
+
+                el.style.backgroundColor = "rgba(255,0,0,0.5)";
+                el.value = "哈哈";
+            },
+
+            inserted(el){
+                // console.log("inserted..........");
+                el.focus();
+            }
+        });
+
+
+        //局部指令
+        var app = new Vue({
+
+            el: "#app",
+
+            data: {
+
+                foo: "ooooooooo"
+            },
+
+            directives: {
+                "abc": {
+                    bind(elt){
+                        elt.style.boxShadow = "5px 5px 5px black";
+                    },
+
+                    inserted(elt){
+
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
