@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue-router/3.4.7/vue-router.min.js"></script>
+</head>
+<body>
+
+    <!-- 
+        路由：选择
+        1、先引入VueRouter库；
+        2、创建VueRouter对象，使用了路由对象以后，不需要把组件注册到vue实例中了，
+            也就是不需要在vue对象中写components了；
+    -->
+    <div id="app">
+        <router-link to="type">type</router-link>
+        <router-link to="book">book</router-link>
+        <router-view></router-view>
+    </div>
+
+    <template id="type">
+        <div>
+            类型管理界面
+            <router-view></router-view>
+        </div>
+    </template>
+
+    <template id="book">
+        <div>
+            图书管理界面
+        </div>
+    </template>
+
+    <template id="addtype">
+        <div>
+            add type
+        </div>
+    </template>
+
+    <template id="findtype">
+        <div>
+            find type
+        </div>
+    </template>
+
+    <script>
+
+        let typeComponent = {
+            template: "#type"
+        };
+
+        let addTypeComponent = {
+            template: "#addtype"
+        };
+
+        let findTypeComponent = {
+            template: "#findtype"
+        };
+
+        let bookComponent = {
+            template: "#book"
+        };
+
+        let router = new VueRouter({
+            routes: [
+                {
+                    component: typeComponent, path: "/type",
+                    children: [
+                        {component: addTypeComponent, path: "/addtype"},
+                        {component: findTypeComponent, path: "/findtype"}
+                    ]
+                },
+
+                {component: bookComponent, path: "/book"},
+            ]
+        });
+        
+        var app = new Vue({
+            el: "#app",
+
+            data: {
+                msg: "66666"
+            },
+
+            "router": router
+        });
+    </script>
+    
+</body>
+</html>

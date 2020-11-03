@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- 
+        父组件无法直接访问子组件的属性和方法
+     -->
+
+    <div id="app">
+        {{msg}}
+        <button @click="f1">父组件按钮</button>
+        <foo ref="ff"></foo>
+    </div>
+
+    <template id="t1">
+        <div>
+            子组件UI
+        </div>
+
+    </template>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+
+            data: {
+                msg: "22222"
+            },
+
+            methods: {
+                f1(){
+                    // console.log("fu-f1..........");
+                    //this.refs就是选中父组件对应元素中所有有ref属性的元素集合
+                    this.msg = this.$refs.ff.name;
+                    this.$refs.ff.run();
+                    
+                }
+            },
+
+            components: {
+                "foo": {
+                    template: "#t1",
+                    data: function(){
+                        return {
+                            "name": "zhangwuji"
+                        }
+                    },
+
+
+                    methods: {
+                        run() {
+                            console.log("pao.......");
+                        }
+                    }
+                }
+            }
+
+        });
+    </script>
+    
+</body>
+</html>
