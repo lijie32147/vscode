@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <span id = "i1">{{foo}}</span>
+        <br>
+        <input type="text" v-model="foo">
+
+        <br>
+
+        <button @click="f1">销毁vue组件</button>
+    </div>
+
+
+    <script>
+
+        var app = new Vue({
+
+            el: "#app",
+
+            data: {
+                foo: "哇哈哈"
+            },
+
+            beforeCreate(){
+                console.log("beforeCreate：" + this.foo);
+            },
+
+            created(){
+                console.log("created：" + this.foo);
+            },
+
+            beforeMount(){
+                var el = document.getElementById("app");
+                console.log("beforeMount: " + el.innerHTML);
+            },
+
+            mounted() {
+                var el = document.getElementById("app");
+                console.log("mounted: " + el.innerHTML);
+            },
+
+            beforeUpdate(){
+                var i1 = document.getElementById("i1");
+                console.log("beforeUpdate: " + i1.innerHTML);
+            },
+
+            updated(){
+                var i1 = document.getElementById("i1");
+                console.log("updated: " + i1.innerHTML);
+            },
+
+            beforeDestroy(){
+                console.log("beforeDestroy......");
+            },
+
+            destroyed(){
+                console.log("destroyed......");
+            },
+
+            methods: {
+                f1(){
+                    this.$destroy();
+                }
+            }
+
+        });
+    </script>
+</body>
+</html>

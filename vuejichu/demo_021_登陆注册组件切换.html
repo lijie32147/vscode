@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/layer/3.1.1/layer.min.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> 
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+
+        <a @click="flag=true">go to loginUI</a> 
+        <br>
+        <a @click="flag=false">go to regUI</a>
+
+        <login v-if="flag"></login>
+        <reg v-else="!flag"></reg>
+    </div>
+
+    <template id="t1">
+        <div>
+            登录组件
+        </div>
+    </template>
+
+    <template id="t2">
+        <div>
+            注册组件
+        </div>
+    </template>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+
+            data:{
+                flag: true
+            },
+
+            components: {
+                login: {
+                    template: "#t1"
+                },
+                reg: {
+                    template: "#t2"
+                }
+            }
+        });   
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/layer/3.1.1/layer.min.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> 
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <c1></c1>
+        {{aaa}}
+    </div>
+
+    <template id="t1">
+        <div>
+            购物车组件: {{msg}}
+        </div>
+    </template>
+
+    <script>
+
+        Vue.component("c1",{
+            template: "#t1",
+            data: function(){
+                return {
+                    msg: "uuuuuuuuuuu"
+                }
+            }
+        });
+    
+        var app = new Vue({
+            el: "#app",
+            data: {
+                aaa: "ddddddd"
+            }
+        });   
+
+    </script>
+
+</body>
+</html>

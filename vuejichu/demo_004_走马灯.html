@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        
+        <div>
+            {{msg}}
+        </div>
+
+        <button @click="lang">浪起来。。。。</button>
+
+        <button @click="stop">别浪！！！</button>
+
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                msg: "姓徐的是大白臭猪！！！！！",
+                timerObject: null
+            },
+
+            methods:{
+                lang(){
+                    var self = this;
+
+                    if(this.timerObject == null){
+                        this.timerObject = setInterval(function(){
+                            self.msg = self.msg.substring(1) + self.msg.substring(0,1);
+                        },100);
+                    }
+                },
+
+                stop(){
+                    clearInterval(this.timerObject);
+                    this.timerObject = null;
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

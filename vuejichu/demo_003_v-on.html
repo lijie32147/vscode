@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <button v-on:click="f1(11)">点点</button>
+
+        <div @mousemove="f2(event)" style="width: 100px; height: 100px; border: black solid 1px;">
+        </div>
+
+        <button @dblclick="f3">点两下</button>
+
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                name: 'andy'
+            },
+            methods: {
+                //如果一个json的属性取值为函数function，则可以直接省略function
+                // f1: function(){
+                //     alert('写优秀代码！！！');
+                // }
+
+                f1(x){
+                    alert('写优秀代码！！！。。。。。' + x*x);
+                },
+
+                f2(e){
+                    console.log(e.clientX + " " + e.clientY);
+                },
+
+                f3(){
+                    console.log("嘻嘻嘻嘻嘻！！！");
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

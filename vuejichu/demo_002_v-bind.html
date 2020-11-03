@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- v-bind 的使用 -->
+    <div id="app">
+        <p v-bind:title="msg">Good Good Study,Day Day up!!!</p>
+
+        <p :title="msg">哇哈哈哈</p>
+
+    </div>
+    
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            msg: "好好学习，天天向上！！！"
+        }
+    });
+</script>
+
+</body>
+</html>

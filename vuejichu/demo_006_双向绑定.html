@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- 单向绑定：当Vue对象的属性发生改变的时候，所有引用{{msg}}的地方都会发生改变！！！ -->
+    <!-- 双向绑定：使用Vue对象的msg属性的地方，把msg的值改了，Vue对象的msg属性也跟着改变 。
+    双向绑定只能用于接受输入的元素，确切的说，就是表单元素：input，select，textarea-->
+
+    <div id="app">
+
+        {{poem}} 
+
+        <br>
+        <br>
+
+        <input type="text" v-model="poem"/>
+
+        <br>
+        <br>
+
+        <textarea type="text" v-model="poem">
+
+        </textarea>
+
+        <br><br>
+
+        <select v-model="fruit">
+            <option value="1">香蕉</option>
+            <option value="2">菠萝</option>
+            <option value="3">脐橙</option>
+        </select>
+        {{fruit}}
+
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+
+            data: {
+                poem: "黄河远上白云间，一片孤城万仞山",
+                fruit: 2
+            }
+        });
+    </script>
+
+</body>
+</html>
