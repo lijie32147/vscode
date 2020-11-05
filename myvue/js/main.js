@@ -3,6 +3,13 @@ import '../css/all.css';
 import Vue from 'vue';
 import App from '../vue/App.vue';
 import router from '../router/router.js';
+import axios from 'axios';
+import layer from 'layui-layer';
+
+window.axios = axios;
+window.layer = layer;
+
+axios.defaults.baseURL = "http://localhost:8080/";
 
 $(function(){
 

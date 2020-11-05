@@ -1,5 +1,7 @@
 const path=require('path');
 
+const webpack = require('webpack');
+
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
@@ -12,7 +14,7 @@ module.exports = {
     module: {
         rules: [
             {test: /\.css$/,use:['style-loader','css-loader']},
-            {test: /\.jpg$/,use:['url-loader']},
+            {test: /\.(jpg|png|gif|bmp)$/,use:['url-loader']},
             {test: /\.vue$/,use:['vue-loader']}
         ]
     },
@@ -24,6 +26,10 @@ module.exports = {
     },
 
     plugins: [
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery"
+        })
     ]
 }

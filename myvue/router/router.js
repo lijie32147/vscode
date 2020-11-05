@@ -2,13 +2,13 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
-import Login from '../vue/Login.vue';
-import Register from '../vue/Register.vue';
+import AddType from '../vue/Type/AddType.vue';
+import FindUser from '../vue/Type/FindUser.vue';
 
 let router = new VueRouter({
     routes: [
-        {component: Login, path: "/Login"},
-        {component: Register, path: "/Register"}   
+        {component: AddType, path: "/AddType"},
+        {component: FindUser, path: "/FindUser"}
     ]
 });
 
