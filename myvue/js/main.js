@@ -5,6 +5,7 @@ import App from '../vue/App.vue';
 import router from '../router/router.js';
 import axios from 'axios';
 import layer from 'layui-layer';
+import '../node_modules/bootstrap3/dist/css/bootstrap.min.css';
 
 window.axios = axios;
 window.layer = layer;

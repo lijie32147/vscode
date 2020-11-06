@@ -15,7 +15,8 @@ module.exports = {
         rules: [
             {test: /\.css$/,use:['style-loader','css-loader']},
             {test: /\.(jpg|png|gif|bmp)$/,use:['url-loader']},
-            {test: /\.vue$/,use:['vue-loader']}
+            {test: /\.vue$/,use:['vue-loader']},
+            {test: /\.(woff|ttf|woff2|eot|svg)$/,use:['url-loader']},
         ]
     },
 
